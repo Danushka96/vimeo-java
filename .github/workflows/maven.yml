@@ -17,8 +17,10 @@ jobs:
           key: ${{ runner.os }}-maven-${{ hashFiles('**/pom.xml') }}
           restore-keys: |
             ${{ runner.os }}-maven-
+      - name: Extract VIMEO_JAVA_VERSION
+        run:  echo "::set-env name=VIMEO_JAVA_VERSION::0.0.${GITHUB_RUN_NUMBER}"
       - name: set version
-        run: mvn versions:set versions:commit -DnewVersion=`0.0.${GITHUB_RUN_NUMBER}`
+        run: mvn versions:set versions:commit -DnewVersion="${VIMEO_JAVA_VERSION}
       - name: Release Maven package
         uses: samuelmeuli/action-maven-publish@v1
         with:
