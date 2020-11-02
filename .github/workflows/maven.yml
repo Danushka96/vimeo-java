@@ -11,6 +11,8 @@ jobs:
         uses: actions/setup-java@v1
         with:
           java-version: 8
+      - name: set version
+        run: mvn versions:set versions:commit -DnewVersion=`1.0.${GITHUB_RUN_NUMBER}`
       - name: Release Maven package
         uses: samuelmeuli/action-maven-publish@v1
         with:
