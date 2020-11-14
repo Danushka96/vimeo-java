@@ -7,26 +7,18 @@ import io.github.danushka96.DefaultVideoMetaBuilder;
  * 10/31/2020
  */
 public class VideoMeta {
+  private String[] content_rating;
   private String description;
-  private String name;
   private Privacy privacy;
-//  private boolean embedButtonsembed;
-//  private boolean embedButtonsFullScreen;
-//  private boolean embedButtonsHd;
-//  private boolean embedButtonsLike;
-//  private boolean embedButtonsScaling;
-//  private boolean embedButtonsShare;
-//  private boolean embedButtonsWatchLater;
-//  private boolean embedColor;
-//  private String embedLogosCustomLink;
-//  private boolean embedLogosCustomSticky;
-//  private boolean embedLogosVimeo;
-//  private boolean embedPlaybar;
-//  private String embedTitleName;
-//  private EmbedOptions embedTitleOwner;
-//  private EmbedOptions embedTitlePortrait;
-//  private boolean embedVolume;
-
+  private Embed embed;
+  private String license;
+  private Live live;
+  private String locale;
+  private String name;
+  private String password;
+  private ReviewPage review_page;
+  private String scheduled_start_time;
+  private Spatial spatial;
 
   public VideoMeta(String description, String name, Privacy privacy) {
     this.description = description;
@@ -60,6 +52,78 @@ public class VideoMeta {
 
   public static DefaultVideoMetaBuilder builder(){
     return new DefaultVideoMetaBuilder();
+  }
+
+  public String[] getContent_rating() {
+    return content_rating;
+  }
+
+  public void setContent_rating(String[] content_rating) {
+    this.content_rating = content_rating;
+  }
+
+  public Embed getEmbed() {
+    return embed;
+  }
+
+  public void setEmbed(Embed embed) {
+    this.embed = embed;
+  }
+
+  public String getLicense() {
+    return license;
+  }
+
+  public void setLicense(String license) {
+    this.license = license;
+  }
+
+  public Live getLive() {
+    return live;
+  }
+
+  public void setLive(Live live) {
+    this.live = live;
+  }
+
+  public String getLocale() {
+    return locale;
+  }
+
+  public void setLocale(String locale) {
+    this.locale = locale;
+  }
+
+  public String getPassword() {
+    return password;
+  }
+
+  public void setPassword(String password) {
+    this.password = password;
+  }
+
+  public ReviewPage getReview_page() {
+    return review_page;
+  }
+
+  public void setReview_page(ReviewPage review_page) {
+    this.review_page = review_page;
+  }
+
+  public String getScheduled_start_time() {
+    return scheduled_start_time;
+  }
+
+  public void setScheduled_start_time(String scheduled_start_time) {
+    this.scheduled_start_time = scheduled_start_time;
+  }
+
+  public Spatial getSpatial() {
+    return spatial;
+  }
+
+  public void setSpatial(Spatial spatial) {
+    this.spatial = spatial;
   }
 }
 

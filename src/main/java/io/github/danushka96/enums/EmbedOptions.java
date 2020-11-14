@@ -9,6 +9,13 @@ public enum EmbedOptions {
   SHOW("show"),
   USER("user");
 
+  String value;
+
   EmbedOptions(String val) {
+    this.value = val;
+  }
+
+  public String getValue() {
+    return value;
   }
 }
