@@ -8,7 +8,7 @@ import io.github.danushka96.models.*;
  * 11/1/2020
  */
 public final class DefaultVideoMetaBuilder {
-    private final Spatial spatial;
+    private Spatial spatial;
     private String[] content_rating;
     private String description;
     private Embed embed;
@@ -22,11 +22,6 @@ public final class DefaultVideoMetaBuilder {
     private String scheduled_start_time;
 
     public DefaultVideoMetaBuilder() {
-        this.embed = new Embed();
-        this.privacy = new Privacy();
-        this.live = new Live();
-        this.review_page = new ReviewPage();
-        this.spatial = new Spatial();
     }
 
     /**
@@ -129,6 +124,10 @@ public final class DefaultVideoMetaBuilder {
         return this;
     }
 
+    public DefaultVideoMetaBuilder withSpatial(Spatial spatial){
+        this.spatial = spatial;
+        return this;
+    }
 
     public VideoMeta build() {
         return new VideoMeta(content_rating, description, privacy, embed, license, live, locale, name, password, review_page, scheduled_start_time, spatial);

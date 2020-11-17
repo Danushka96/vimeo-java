@@ -7,13 +7,13 @@ package io.github.danushka96.models;
 class DirectorTimeline {
     private int pitch;
     private int roll;
-    private int timecode;
+    private int time_code;
     private int yaw;
 
-    public DirectorTimeline(int pitch, int roll, int timecode, int yaw) {
+    public DirectorTimeline(int pitch, int roll, int time_code, int yaw) {
         this.pitch = pitch;
         this.roll = roll;
-        this.timecode = timecode;
+        this.time_code = time_code;
         this.yaw = yaw;
     }
 
@@ -37,12 +37,12 @@ class DirectorTimeline {
         this.roll = roll;
     }
 
-    public int getTimecode() {
-        return timecode;
+    public int getTime_code() {
+        return time_code;
     }
 
-    public void setTimecode(int timecode) {
-        this.timecode = timecode;
+    public void setTime_code(int time_code) {
+        this.time_code = time_code;
     }
 
     public int getYaw() {
