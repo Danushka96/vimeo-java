@@ -18,6 +18,10 @@ public class ReviewPage {
         this.vimeo_logo = vimeo_logo;
     }
 
+    public static Builder builder() {
+        return new Builder();
+    }
+
     public boolean isActive() {
         return active;
     }
@@ -42,7 +46,7 @@ public class ReviewPage {
         this.vimeo_logo = vimeo_logo;
     }
 
-    public static class Builder{
+    public static class Builder {
         private boolean active;
         private boolean notes;
         private boolean vimeo_logo;
@@ -52,35 +56,38 @@ public class ReviewPage {
 
         /**
          * Whether to enable video review.
+         *
          * @param active
          * @return
          */
-        public Builder withActive(boolean active){
+        public Builder withActive(boolean active) {
             this.active = active;
             return this;
         }
 
         /**
          * Whether to enable review comments.
+         *
          * @param notes
          * @return
          */
-        public Builder withNotes(boolean notes){
+        public Builder withNotes(boolean notes) {
             this.notes = notes;
             return this;
         }
 
         /**
          * Whether to show the Vimeo logo on the review page.
+         *
          * @param vimeoLogo
          * @return
          */
-        public Builder withVimeoLogo(boolean vimeoLogo){
+        public Builder withVimeoLogo(boolean vimeoLogo) {
             this.vimeo_logo = vimeoLogo;
             return this;
         }
 
-        public ReviewPage build(){
+        public ReviewPage build() {
             return new ReviewPage(active, notes, vimeo_logo);
         }
     }

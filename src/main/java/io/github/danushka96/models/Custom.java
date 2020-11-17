@@ -20,6 +20,10 @@ class Custom {
         this.link = link;
     }
 
+    public static Builder Builder() {
+        return new Builder();
+    }
+
     public boolean isActive() {
         return active;
     }
@@ -52,11 +56,7 @@ class Custom {
         this.link = link;
     }
 
-    public static Builder Builder(){
-        return new Builder();
-    }
-
-    public static class Builder{
+    public static class Builder {
         private boolean active;
         private boolean id;
         private boolean sticky;
@@ -70,30 +70,33 @@ class Custom {
 
         /**
          * Whether to show the active custom logo on the embeddable player.
+         *
          * @param value
          * @return Builder
          */
-        public Builder withActive(boolean value){
+        public Builder withActive(boolean value) {
             this.active = value;
             return this;
         }
 
         /**
          * The ID of the custom logo that will show on the emeddable player.
+         *
          * @param value
          * @return
          */
-        public Builder withId(boolean value){
+        public Builder withId(boolean value) {
             this.id = value;
             return this;
         }
 
         /**
          * The URL that loads when the user clicks the custom logo.
+         *
          * @param link
          * @return
          */
-        public Builder withLink(String link){
+        public Builder withLink(String link) {
             this.link = link;
             return this;
         }
@@ -101,15 +104,16 @@ class Custom {
         /**
          * Whether the custom logo is always visible on the embeddable player (true)
          * or whether the logo appears and disappears with the rest of the UI (false).
+         *
          * @param value
          * @return
          */
-        public Builder withSticky(boolean value){
+        public Builder withSticky(boolean value) {
             this.sticky = value;
             return this;
         }
 
-        public Custom build(){
+        public Custom build() {
             return new Custom(active, id, sticky, link);
         }
     }

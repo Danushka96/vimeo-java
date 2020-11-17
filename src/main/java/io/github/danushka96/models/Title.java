@@ -20,6 +20,10 @@ public class Title {
         this.portrait = portrait;
     }
 
+    public static Builder builder() {
+        return new Builder();
+    }
+
     public String getName() {
         return name;
     }
@@ -44,7 +48,7 @@ public class Title {
         this.portrait = portrait;
     }
 
-    public static class Builder{
+    public static class Builder {
         private String name;
         private String owner;
         private String portrait;
@@ -57,10 +61,11 @@ public class Title {
          * hide - Hide the video title.
          * show - Show the video title.
          * user - Enable the user to decide.
+         *
          * @param name EmbedOptions
          * @return Builder
          */
-        public Builder withName(EmbedOptions name){
+        public Builder withName(EmbedOptions name) {
             this.name = name.getValue();
             return this;
         }
@@ -70,10 +75,11 @@ public class Title {
          * hide - Hide the video title.
          * show - Show the video title.
          * user - Enable the user to decide.
+         *
          * @param owner EmbedOptions
          * @return Builder
          */
-        public Builder withOwner(EmbedOptions owner){
+        public Builder withOwner(EmbedOptions owner) {
             this.owner = owner.getValue();
             return this;
         }
@@ -83,15 +89,16 @@ public class Title {
          * hide - Hide the video title.
          * show - Show the video title.
          * user - Enable the user to decide.
+         *
          * @param portrait EmbedOptions
          * @return Builder
          */
-        public Builder withPortrait(EmbedOptions portrait){
+        public Builder withPortrait(EmbedOptions portrait) {
             this.portrait = portrait.getValue();
             return this;
         }
 
-        public Title build(){
+        public Title build() {
             return new Title(name, owner, portrait);
         }
     }

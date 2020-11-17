@@ -15,6 +15,10 @@ public class Embed {
     public Embed() {
     }
 
+    public static Builder builder() {
+        return new Builder();
+    }
+
     public Buttons getButtons() {
         return buttons;
     }
@@ -63,7 +67,7 @@ public class Embed {
         this.volume = volume;
     }
 
-    public static class Builder{
+    public static class Builder {
         private Buttons buttons;
         private String color;
         private Logos logos;
@@ -77,47 +81,50 @@ public class Embed {
             this.logos = new Logos();
         }
 
-        public Builder withButton(Buttons buttons){
+        public Builder withButton(Buttons buttons) {
             this.buttons = buttons;
             return this;
         }
 
         /**
          * The main color of the embeddable player.
+         *
          * @param color
          * @return Builder
          */
-        public Builder withColor(String color){
+        public Builder withColor(String color) {
             this.color = color;
             return this;
         }
 
-        public Builder withLogos(Logos logos){
+        public Builder withLogos(Logos logos) {
             this.logos = logos;
             return this;
         }
 
         /**
          * Whether to show the playbar on the embeddable player.
+         *
          * @param playBar
          * @return
          */
-        public Builder withPlaybar(boolean playBar){
+        public Builder withPlaybar(boolean playBar) {
             this.playbar = playBar;
             return this;
         }
 
-        public Builder withTitle(Title title){
+        public Builder withTitle(Title title) {
             this.title = title;
             return this;
         }
 
         /**
          * Whether to show the volume selector on the embeddable player.
+         *
          * @param volume
          * @return
          */
-        public Builder volume(boolean volume){
+        public Builder volume(boolean volume) {
             this.volume = volume;
             return this;
         }

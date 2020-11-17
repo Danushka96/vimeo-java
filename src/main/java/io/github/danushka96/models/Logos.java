@@ -16,6 +16,10 @@ public class Logos {
         this.vimeo = vimeo;
     }
 
+    public static Builder builder() {
+        return new Builder();
+    }
+
     public Custom getCustom() {
         return custom;
     }
@@ -32,7 +36,7 @@ public class Logos {
         this.vimeo = vimeo;
     }
 
-    public static class Builder{
+    public static class Builder {
         private Custom custom;
         private boolean vimeo;
 
@@ -41,22 +45,23 @@ public class Logos {
             this.vimeo = true;
         }
 
-        public Builder withCustom(Custom custom){
+        public Builder withCustom(Custom custom) {
             this.custom = custom;
             return this;
         }
 
         /**
          * Whether to show the Vimeo logo on the embeddable player.
+         *
          * @param value
          * @return
          */
-        public Builder withVimeo(boolean value){
+        public Builder withVimeo(boolean value) {
             this.vimeo = value;
             return this;
         }
 
-        public Logos build(){
+        public Logos build() {
             return new Logos(custom, vimeo);
         }
     }

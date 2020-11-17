@@ -20,6 +20,10 @@ public class Live {
         this.status = status;
     }
 
+    public static Builder builder() {
+        return new Builder();
+    }
+
     public SimulcastDestinations[] getSimulcast_destinations() {
         return simulcast_destinations;
     }
@@ -44,22 +48,23 @@ public class Live {
         this.status = status;
     }
 
-    public static class Builder{
+    public static class Builder {
         private SimulcastDestinations[] simulcast_destinations;
         private boolean simulcast_only;
         private String status;
 
-        public Builder withSimulcastDestination(SimulcastDestinations[] simulcastDestinations){
+        public Builder withSimulcastDestination(SimulcastDestinations[] simulcastDestinations) {
             this.simulcast_destinations = simulcastDestinations;
             return this;
         }
 
         /**
          * Whether to hide the video from its owner during streaming.
+         *
          * @param value
          * @return
          */
-        public Builder withSimulcastOnly(Boolean value){
+        public Builder withSimulcastOnly(Boolean value) {
             this.simulcast_only = value;
             return this;
         }
@@ -70,15 +75,16 @@ public class Live {
          * ready - Start a live-stream-initialized video into streaming mode.
          * done
          * ready
+         *
          * @param liveStatus
          * @return
          */
-        public Builder withStatus(LiveStatus liveStatus){
+        public Builder withStatus(LiveStatus liveStatus) {
             this.status = liveStatus.getVal();
             return this;
         }
 
-        public Live build(){
+        public Live build() {
             return new Live(simulcast_destinations, simulcast_only, status);
         }
     }

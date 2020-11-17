@@ -30,6 +30,10 @@ public class SimulcastDestinationsMetaData {
         this.video_id = video_id;
     }
 
+    public static Builder builder() {
+        return new Builder();
+    }
+
     public String getDescription() {
         return description;
     }
@@ -118,30 +122,33 @@ public class SimulcastDestinationsMetaData {
 
         /**
          * The description of the simulcast. This field applies to Facebook and YouTube destinations.
+         *
          * @param description
          * @return
          */
-        public Builder withDescription(String description){
+        public Builder withDescription(String description) {
             this.description = description;
             return this;
         }
 
         /**
          * The ID of the event associated with the simulcast. This field applies to Livestream destinations.
+         *
          * @param eventId
          * @return
          */
-        public Builder withEventId(String eventId){
+        public Builder withEventId(String eventId) {
             this.event_id = eventId;
             return this;
         }
 
         /**
          * The ID of the object that contains the video on the host service. This field applies to Facebook destinations.
+         *
          * @param parentId
          * @return
          */
-        public Builder withParentId(String parentId){
+        public Builder withParentId(String parentId) {
             this.parent_id = parentId;
             return this;
         }
@@ -157,30 +164,33 @@ public class SimulcastDestinationsMetaData {
          * public - YouTube: Anyone can access the stream.
          * self - Facebook: The owner of the Facebook profile can access the stream.
          * unlisted - YouTube: Anyone can access the stream, but it isn't searchable.
+         *
          * @param privacy
          * @return
          */
-        public Builder withPrivacy(SocialPrivacy privacy){
+        public Builder withPrivacy(SocialPrivacy privacy) {
             this.privacy = privacy.getVal();
             return this;
         }
 
         /**
          * Whether the simulcast is automatically tweeted. This field applies to Periscope destinations.
+         *
          * @param should_tweet
          * @return
          */
-        public Builder withShouldTweet(boolean should_tweet){
+        public Builder withShouldTweet(boolean should_tweet) {
             this.should_tweet = should_tweet;
             return this;
         }
 
         /**
          * The title of the simulcast. This field applies to YouTube, Facebook, Periscope, and Livestream destinations.
+         *
          * @param title
          * @return
          */
-        public Builder withTitle(String title){
+        public Builder withTitle(String title) {
             this.title = title;
             return this;
         }
@@ -193,37 +203,40 @@ public class SimulcastDestinationsMetaData {
          * page - The simulcast is on a Facebook page.
          * profile - The simulcast is in a Facebook profile.
          * scheduled_broadcast - The simulcast is in a Facebook Live scheduled broadcast.
+         *
          * @param type
          * @return
          */
-        public Builder withType(SimulcastVideoType type){
+        public Builder withType(SimulcastVideoType type) {
             this.type = type.getVal();
             return this;
         }
 
         /**
-         * 	The host-service ID of the user who owns the simulcast video.
-         * 	This field applies to Facebook, YouTube, Periscope, and Livestream destinations.
+         * The host-service ID of the user who owns the simulcast video.
+         * This field applies to Facebook, YouTube, Periscope, and Livestream destinations.
+         *
          * @param userId
          * @return
          */
-        public Builder withUserId(String userId){
+        public Builder withUserId(String userId) {
             this.user_id = userId;
             return this;
         }
 
         /**
-         * 	The host-service ID of the simulcast video.
-         * 	This field applies to Facebook, YouTube, and Periscope destinations.
+         * The host-service ID of the simulcast video.
+         * This field applies to Facebook, YouTube, and Periscope destinations.
+         *
          * @param videoId
          * @return
          */
-        public Builder withVideoId(String videoId){
+        public Builder withVideoId(String videoId) {
             this.video_id = videoId;
             return this;
         }
 
-        public SimulcastDestinationsMetaData build(){
+        public SimulcastDestinationsMetaData build() {
             return new SimulcastDestinationsMetaData(description, event_id, parent_id, privacy, should_tweet, title,
                     type, user_id, video_id);
         }

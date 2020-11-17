@@ -20,10 +20,21 @@ public class VideoMeta {
   private String scheduled_start_time;
   private Spatial spatial;
 
-  public VideoMeta(String description, String name, Privacy privacy) {
+  public VideoMeta(String[] content_rating, String description, Privacy privacy, Embed embed, String license, Live live,
+                   String locale, String name, String password, ReviewPage review_page, String scheduled_start_time,
+                   Spatial spatial) {
+    this.content_rating = content_rating;
     this.description = description;
-    this.name = name;
     this.privacy = privacy;
+    this.embed = embed;
+    this.license = license;
+    this.live = live;
+    this.locale = locale;
+    this.name = name;
+    this.password = password;
+    this.review_page = review_page;
+    this.scheduled_start_time = scheduled_start_time;
+    this.spatial = spatial;
   }
 
   public String getDescription() {

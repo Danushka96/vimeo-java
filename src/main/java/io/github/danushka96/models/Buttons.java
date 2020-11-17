@@ -26,6 +26,10 @@ class Buttons {
         this.watchLater = watchLater;
     }
 
+    public static Builder builder() {
+        return new Builder();
+    }
+
     public boolean isEmbed() {
         return embed;
     }
@@ -82,11 +86,7 @@ class Buttons {
         this.watchLater = watchLater;
     }
 
-    public Builder builder(){
-        return new Builder();
-    }
-
-    public static class Builder{
+    public static class Builder {
         private boolean embed;
         private boolean fullscreen;
         private boolean hd;
@@ -107,75 +107,82 @@ class Buttons {
 
         /**
          * Whether to show the embed button on the embeddable player.
+         *
          * @param value
          * @return Builder
          */
-        public Builder withEmbed(boolean value){
+        public Builder withEmbed(boolean value) {
             this.embed = value;
             return this;
         }
 
         /**
          * Whether to show the fullscreen button on the embeddable player.
+         *
          * @param value
          * @return Builder
          */
-        public Builder withFullscreen(boolean value){
+        public Builder withFullscreen(boolean value) {
             this.fullscreen = value;
             return this;
         }
 
         /**
          * Whether to show the HD button on the embeddable player.
+         *
          * @param value
          * @return Builder
          */
-        public Builder withHd(boolean value){
+        public Builder withHd(boolean value) {
             this.hd = value;
             return this;
         }
 
         /**
-         * 	Whether to show the like button on the embeddable player.
+         * Whether to show the like button on the embeddable player.
+         *
          * @param value
          * @return Builder
          */
-        public Builder withLike(boolean value){
+        public Builder withLike(boolean value) {
             this.like = value;
             return this;
         }
 
         /**
          * Whether to show the scaling button on the embeddable player in fullscreen mode.
+         *
          * @param value
          * @return Builder
          */
-        public Builder withScaling(boolean value){
+        public Builder withScaling(boolean value) {
             this.scaling = value;
             return this;
         }
 
         /**
          * Whether to show the share button on the embeddable player.
+         *
          * @param value
          * @return Builder
          */
-        public Builder withShare(boolean value){
+        public Builder withShare(boolean value) {
             this.share = value;
             return this;
         }
 
         /**
          * Whether to show the watch later button on the embeddable player.
+         *
          * @param value
          * @return Builder
          */
-        public Builder withWatchLater(boolean value){
+        public Builder withWatchLater(boolean value) {
             this.watchLater = value;
             return this;
         }
 
-        public Buttons build(){
+        public Buttons build() {
             return new Buttons(embed, fullscreen, hd, like, scaling, share, watchLater);
         }
     }

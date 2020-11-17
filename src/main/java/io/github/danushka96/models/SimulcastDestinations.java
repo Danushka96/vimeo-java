@@ -51,23 +51,28 @@ public class SimulcastDestinations {
         this.stream_key = stream_key;
     }
 
-    public static class Builder{
+    public static Builder builder(){
+        return new Builder();
+    }
+
+    public static class Builder {
         private SimulcastDestinationsMetaData metaData;
         private String rtmp_link;
         private String service_name;
         private String stream_key;
 
-        public Builder withMetaData(SimulcastDestinationsMetaData metaData){
+        public Builder withMetaData(SimulcastDestinationsMetaData metaData) {
             this.metaData = metaData;
             return this;
         }
 
         /**
          * The RTMP URL of a destination beyond Vimeo where the simulcast should be pushed.
+         *
          * @param rtmpLink
          * @return
          */
-        public Builder withRTMPLink(String rtmpLink){
+        public Builder withRTMPLink(String rtmpLink) {
             this.rtmp_link = rtmpLink;
             return this;
         }
@@ -84,25 +89,27 @@ public class SimulcastDestinations {
          * livestream
          * periscope
          * youtube
+         *
          * @param serviceName
          * @return
          */
-        public Builder withServiceName(ServiceNames serviceName){
+        public Builder withServiceName(ServiceNames serviceName) {
             this.service_name = serviceName.getVal();
             return this;
         }
 
         /**
          * The RTMP URL of a destination beyond Vimeo where the simulcast should be pushed.
+         *
          * @param streamKey
          * @return
          */
-        public Builder withStreamKey(String streamKey){
+        public Builder withStreamKey(String streamKey) {
             this.stream_key = streamKey;
             return this;
         }
 
-        public SimulcastDestinations build(){
+        public SimulcastDestinations build() {
             return new SimulcastDestinations(metaData, rtmp_link, service_name, stream_key);
         }
     }

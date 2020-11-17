@@ -17,6 +17,10 @@ class DirectorTimeline {
         this.yaw = yaw;
     }
 
+    public static Builder builder() {
+        return new Builder();
+    }
+
     public int getPitch() {
         return pitch;
     }

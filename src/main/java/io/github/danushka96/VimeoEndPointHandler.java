@@ -1,6 +1,6 @@
 package io.github.danushka96;
 
-import io.github.danushka96.models.InitVideoResponse;
+import io.github.danushka96.dtos.InitVideoResponse;
 import io.github.danushka96.models.VideoMeta;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;

@@ -22,6 +22,10 @@ public class Spatial {
         this.stereo_format = stereo_format;
     }
 
+    public static Builder builder() {
+        return new Builder();
+    }
+
     public DirectorTimeline[] getDirector_timeline() {
         return director_timeline;
     }
@@ -54,7 +58,7 @@ public class Spatial {
         this.stereo_format = stereo_format;
     }
 
-    public static class Builder{
+    public static class Builder {
         private DirectorTimeline[] director_timeline;
         private int field_of_view;
         private String projection;
@@ -62,20 +66,22 @@ public class Spatial {
 
         /**
          * An array representing the 360 director timeline.
+         *
          * @param directorTimeLine
          * @return
          */
-        public Builder withDirectorTimeLine(DirectorTimeline[] directorTimeLine){
+        public Builder withDirectorTimeLine(DirectorTimeline[] directorTimeLine) {
             this.director_timeline = directorTimeLine;
             return this;
         }
 
         /**
-         * 	The 360 field of view. This value must be between 30 and 90. The default is 50.
+         * The 360 field of view. This value must be between 30 and 90. The default is 50.
+         *
          * @param fieldOfView
          * @return
          */
-        public Builder withFieldOfView(int fieldOfView){
+        public Builder withFieldOfView(int fieldOfView) {
             this.field_of_view = fieldOfView;
             return this;
         }
@@ -87,25 +93,27 @@ public class Spatial {
          * dome - Use dome projection.
          * equirectangular - Use equirectangular projection.
          * pyramid - Use pyramid projection.
+         *
          * @param projection
          * @return
          */
-        public Builder withProjection(SpatialProjection projection){
+        public Builder withProjection(SpatialProjection projection) {
             this.projection = projection.getVal();
             return this;
         }
 
         /**
-         * 	The 360 field of view. This value must be between 30 and 90. The default is 50.
+         * The 360 field of view. This value must be between 30 and 90. The default is 50.
+         *
          * @param stereoFormat
          * @return
          */
-        public Builder withStereoFormat(String stereoFormat){
+        public Builder withStereoFormat(String stereoFormat) {
             this.stereo_format = stereoFormat;
             return this;
         }
 
-        public Spatial build(){
+        public Spatial build() {
             return new Spatial(director_timeline, field_of_view, projection, stereo_format);
         }
 

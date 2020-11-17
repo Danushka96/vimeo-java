@@ -1,4 +1,4 @@
-package io.github.danushka96.models;
+package io.github.danushka96.dtos;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
