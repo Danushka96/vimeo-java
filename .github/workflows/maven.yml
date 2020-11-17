@@ -18,7 +18,7 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-maven-
       - name: Extract VIMEO_JAVA_VERSION
-        run:  echo "::set-env name=VIMEO_JAVA_VERSION::0.0.${GITHUB_RUN_NUMBER}"
+        run:  echo "VIMEO_JAVA_VERSION=0.0.${GITHUB_RUN_NUMBER}" > ${GITHUB_ENV}
       - name: set version
         run: mvn versions:set versions:commit -DnewVersion="${VIMEO_JAVA_VERSION}"
       - name: Release Maven package
