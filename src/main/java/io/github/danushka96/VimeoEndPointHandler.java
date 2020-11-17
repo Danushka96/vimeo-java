@@ -64,6 +64,12 @@ public class VimeoEndPointHandler {
       .retrieve().bodyToMono(String.class);
   }
 
+  public Mono<String> deleteVideo(String videoId){
+    return this.webClient.delete()
+            .uri("/videos/" + videoId)
+            .retrieve().bodyToMono(String.class);
+  }
+
   private MultiValueMap<String, HttpEntity<?>> fromFile(FilePart file) {
     MultipartBodyBuilder builder = new MultipartBodyBuilder();
     builder.part("file_data", file);
