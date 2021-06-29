@@ -15,6 +15,15 @@ public class Embed {
     public Embed() {
     }
 
+    public Embed(Buttons buttons, String color, Logos logos, boolean playbar, Title title, boolean volume) {
+        this.buttons = buttons;
+        this.color = color;
+        this.logos = logos;
+        this.playbar = playbar;
+        this.title = title;
+        this.volume = volume;
+    }
+
     public static Builder builder() {
         return new Builder();
     }
@@ -127,6 +136,10 @@ public class Embed {
         public Builder volume(boolean volume) {
             this.volume = volume;
             return this;
+        }
+
+        public Embed build() {
+            return new Embed(this.buttons, this.color, this.logos, this.playbar, this.title, this.volume);
         }
 
     }
