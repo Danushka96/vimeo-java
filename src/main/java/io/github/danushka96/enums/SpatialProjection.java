@@ -4,7 +4,7 @@ package io.github.danushka96.enums;
  * @author danushka
  * 11/4/2020
  */
-public enum  SpatialProjection {
+public enum SpatialProjection {
     CUBICAL("cubical"),
     CYLINDRICAL("cylindrical"),
     DOME("dome"),

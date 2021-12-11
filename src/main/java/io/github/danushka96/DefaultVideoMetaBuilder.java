@@ -1,5 +1,6 @@
 package io.github.danushka96;
 
+
 import io.github.danushka96.enums.License;
 import io.github.danushka96.models.*;
 
@@ -124,12 +125,12 @@ public final class DefaultVideoMetaBuilder {
         return this;
     }
 
-    public DefaultVideoMetaBuilder withSpatial(Spatial spatial){
+    public DefaultVideoMetaBuilder withSpatial(Spatial spatial) {
         this.spatial = spatial;
         return this;
     }
 
-    public VideoMeta build() {
-        return new VideoMeta(content_rating, description, privacy, embed, license, live, locale, name, password, review_page, scheduled_start_time, spatial);
+    public VimeoVideoMeta build() {
+        return new VimeoVideoMeta(content_rating, description, privacy, embed, license, live, locale, name, password, review_page, scheduled_start_time, spatial);
     }
 }

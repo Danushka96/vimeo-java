@@ -5,17 +5,17 @@ package io.github.danushka96.enums;
  * 11/1/2020
  */
 public enum EmbedOptions {
-  HIDE("hide"),
-  SHOW("show"),
-  USER("user");
+    HIDE("hide"),
+    SHOW("show"),
+    USER("user");
 
-  String value;
+    String value;
 
-  EmbedOptions(String val) {
-    this.value = val;
-  }
+    EmbedOptions(String val) {
+        this.value = val;
+    }
 
-  public String getValue() {
-    return value;
-  }
+    public String getValue() {
+        return value;
+    }
 }

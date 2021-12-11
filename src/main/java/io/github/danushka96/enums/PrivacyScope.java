@@ -5,17 +5,17 @@ package io.github.danushka96.enums;
  * 11/1/2020
  */
 public enum PrivacyScope {
-  PRIVATE("private"),
-  PUBLIC("public"),
-  WHITELIST("whitelist");
+    PRIVATE("private"),
+    PUBLIC("public"),
+    WHITELIST("whitelist");
 
-  private final String val;
+    private final String val;
 
-  PrivacyScope(String val) {
-    this.val = val;
-  }
+    PrivacyScope(String val) {
+        this.val = val;
+    }
 
-  public String getVal() {
-    return val;
-  }
+    public String getVal() {
+        return val;
+    }
 }

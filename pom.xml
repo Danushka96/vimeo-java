@@ -17,7 +17,6 @@
             <name>Danushka Herath</name>
             <email>danushkaherath96@gmail.com</email>
             <organization>eNenasa</organization>
-            <!--            <organizationUrl>http://dhahas.com</organizationUrl>-->
         </developer>
     </developers>
 
@@ -115,6 +114,12 @@
             <groupId>com.fasterxml.jackson.core</groupId>
             <artifactId>jackson-annotations</artifactId>
             <version>2.11.1</version>
+        </dependency>
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <version>RELEASE</version>
+            <scope>compile</scope>
         </dependency>
     </dependencies>
     <distributionManagement>
