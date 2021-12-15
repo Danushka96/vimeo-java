@@ -1,26 +1,34 @@
 name: Publish package to GitHub Packages
 on:
-  push:
-    branches: [ master ]
+  release:
+    types: [ published ]
 jobs:
   publish:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
+
       - name: Install Java and Maven
         uses: actions/setup-java@v1
         with:
           java-version: 8
+
       - uses: actions/cache@v1
         with:
           path: ~/.m2/repository
           key: ${{ runner.os }}-maven-${{ hashFiles('**/pom.xml') }}
           restore-keys: |
             ${{ runner.os }}-maven-
+
       - name: Extract VIMEO_JAVA_VERSION
-        run:  echo "VIMEO_JAVA_VERSION=0.0.${GITHUB_RUN_NUMBER}" > ${GITHUB_ENV}
+        run: |
+          export BUILD_TAG_PARTS=(${GITHUB_REF//// })
+          export VIMEO_JAVA_VERSION=${BUILD_TAG_PARTS[-1]}
+          echo "Build version is: ${VIMEO_JAVA_VERSION}"
+
       - name: set version
         run: mvn versions:set versions:commit -DnewVersion="${VIMEO_JAVA_VERSION}"
+
       - name: Release Maven package
         uses: samuelmeuli/action-maven-publish@v1
         with:

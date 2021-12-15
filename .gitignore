@@ -73,3 +73,6 @@ fabric.properties
 examples/demo/.idea
 examples/demo/vimeo-educore.iml
 examples/demo/target
+
+target/*
+.idea
