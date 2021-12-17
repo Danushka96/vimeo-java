@@ -1,5 +1,5 @@
 # Vimeo-Java Client SDK
-![Build](https://github.com/Danushka96/vimeo-java/workflows/Publish%20package%20to%20GitHub%20Packages/badge.svg) [![Maven Central](https://img.shields.io/maven-central/v/io.github.danushka96/vimeo-java.svg?label=Maven%20Central)](https://search.maven.org/search?q=g:%22io.github.danushka96%22%20AND%20a:%22vimeo-java%22)
+[![Maven central release](https://github.com/Danushka96/vimeo-java/actions/workflows/maven.yml/badge.svg?branch=master)](https://github.com/Danushka96/vimeo-java/actions/workflows/maven.yml) [![Maven Central](https://img.shields.io/maven-central/v/io.github.danushka96/vimeo-java.svg?label=Maven%20Central)](https://search.maven.org/search?q=g:%22io.github.danushka96%22%20AND%20a:%22vimeo-java%22)
 
 Java Client for [Vimeo ](https://vimeo.com/)
 
@@ -39,22 +39,50 @@ implementation 'io.github.danushka96:vimeo-java:0.0.19'
 
 ## Example
 
+### Controller
+
 ```lang=java
-public static void main(String[] args) {
-    VimeoEndPointHandler endPointHandler = new VimeoEndPointHandler("YOUR-TOKEN-HERE");
-    VideoMeta videoMeta = VideoMeta.builder()
-      .withName("Title Here")
-      .withDescription("Description Here")
-      .withPrivacy(Privacy.builder()
-        .withDownload(false)
-        .withEmbed(PrivacyScope.PRIVATE)
-        .withView(PrivacyView.DISABLE)
-        .build())
-      .build();
-    endPointHandler.initUploadVideo(videoMeta).subscribe(response -> {
-      endPointHandler.uploadVideo(response.getUri(), new File("./path/to/your/file"));
-    });
-  }
+@PostMapping(consumes = MediaType.MULTIPART_FORM_DATA_VALUE, produces = MediaType.APPLICATION_STREAM_JSON_VALUE)
+public Mono<ResponseEntity> uploadFile(@RequestPart("files") Flux<FilePart> filePartFlux) {
+   VimeoVideoMeta videoMeta = VimeoVideoMeta.builder()
+                .name("My test video")
+                .description("Test video description")
+                .embed(Embed.builder()
+                        .playbar(true)
+                        .volume(true)
+                        .buttons(Buttons.builder()
+                                .hd(true)
+                                .like(false)
+                                .scaling(true)
+                                .share(false)
+                                .watchlater(false)
+                                .fullscreen(true)
+                                .build())
+                        .title(Title.builder()
+                                .portrait(EmbedOptions.HIDE.getValue())
+                                .owner(EmbedOptions.HIDE.getValue())
+                                .name(EmbedOptions.HIDE.getValue())
+                                .build())
+                        .logos(Logos.builder()
+                                .vimeo(false)
+                                .build())
+                        .build()
+                )
+                .privacy(Privacy.builder()
+                        .download(false)
+                        .embed(PrivacyScope.WHITELIST.getVal())
+                        .view(PrivacyView.DISABLE.getVal())
+                        .build())
+                .build();
+
+   return filePartFlux
+        .flatMap(f -> vimeoVideoService.initVideoUploadMeta(videoMeta)
+                .flatMap(resp -> vimeoVideoService.uploadVideo(resp.getUpload().getUploadLink(), f)
+                        .doOnError(System.out::println)
+                        .doOnNext(System.out::println)))
+        .then(Mono.just("SUCCESS"))
+        .doOnError(System.out::println);
+}
 ```
 
 ## Contribution
