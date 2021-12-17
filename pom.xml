@@ -10,13 +10,13 @@
     <packaging>jar</packaging>
     <name>Vimeo Java</name>
     <description>This is a java SDK for Vimeo</description>
-    <url>http://danushka96.github.io</url>
+    <url>https://danushka96.github.io</url>
 
     <developers>
         <developer>
             <name>Danushka Herath</name>
             <email>danushkaherath96@gmail.com</email>
-            <organization>eNenasa</organization>
+            <organization>KlassLK</organization>
         </developer>
     </developers>
 
