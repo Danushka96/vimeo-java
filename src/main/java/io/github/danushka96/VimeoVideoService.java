@@ -7,6 +7,7 @@ import io.github.danushka96.models.VimeoGetVideoResponse;
 import io.github.danushka96.models.VimeoVideoMeta;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.client.MultipartBodyBuilder;
 import org.springframework.http.codec.multipart.FilePart;
@@ -33,7 +34,10 @@ public class VimeoVideoService implements VideoService {
         String endPoint = "https://api.vimeo.com";
         this.webClient = WebClient.builder()
                 .baseUrl(endPoint)
-                .defaultHeader(HttpHeaders.AUTHORIZATION, "bearer" + " " + token)
+                .defaultHeaders(h -> {
+                    h.add(HttpHeaders.ACCEPT, "application/vnd.vimeo.*+json;version=3.3");
+                    h.add(HttpHeaders.AUTHORIZATION, "bearer" + " " + token);
+                })
                 .build();
     }
 
@@ -101,8 +105,15 @@ public class VimeoVideoService implements VideoService {
                 return this.webClient.post()
                         .uri("/me/videos")
                         .body(BodyInserters.fromValue(meta))
-                        .retrieve().bodyToMono(VimeoInitVideoResponse.class)
-                        .retryWhen(Retry.backoff(3, Duration.ofSeconds(2)).jitter(0.75));
+                        .retrieve()
+                        .onStatus(HttpStatus::isError, clientResponse ->
+                                clientResponse.bodyToMono(String.class)
+                                        .handle((error, sink) ->
+                                                System.out.println(error)
+                                        )
+                        )
+                        .bodyToMono(VimeoInitVideoResponse.class)
+                        .doOnError(err -> System.out.println(err.getMessage()));
             } catch (Exception e) {
                 e.printStackTrace();
             }
